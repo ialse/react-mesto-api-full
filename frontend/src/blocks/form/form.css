@@ -1,0 +1,11 @@
+@import url("./__title/form__title.css");
+@import url("./__input/form__input.css");
+@import url("./__btn/form__btn.css");
+@import url("./__text/form__text.css");
+@import url("./__link/form__link.css");
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0 0;
+}

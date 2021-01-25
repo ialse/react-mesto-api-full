@@ -1,0 +1,12 @@
+.popup__error {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 5px);
+  width: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.25;
+  box-sizing: border-box;
+  color: #FF0000;
+}
