@@ -24,6 +24,10 @@ mongoose.connect(DB_CONN, {
 
 const corsOptions = {
   origin: [
+    'http://ialse-mesto.students.nomoredomains.rocks',
+    'http://www.ialse-mesto.students.nomoredomains.rocks',
+    'http://api.ialse-mesto.students.nomoredomains.rocks',
+    'http://www.api.ialse-mesto.students.nomoredomains.rocks',
     'http://localhost:3001',
     'http://localhost:3000',
     'http://127.0.0.1:3001',
