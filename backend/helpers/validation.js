@@ -1,9 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
 const addUserValid = celebrate({
-  headers: Joi.object().keys({
-    'Content-Type': Joi.string().required(), // .regex(/application/),
-  }).options({ allowUnknown: true }),
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),

@@ -11,7 +11,7 @@ const createUser = require('./controllers/users/adduser');
 const auth = require('./middlewares/auth');
 const finalErr = require('./errors/final-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { loginValid } = require('./helpers/validation');
+const { addUserValid } = require('./helpers/validation');
 
 const { PORT = 3000, DB_CONN } = process.env;
 const app = express();
@@ -51,8 +51,8 @@ app.use(bodyParser.json()); // Включаю бодипарсер
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(requestLogger); // лог запросов
 
-app.post('/signin', loginValid, login);
-app.post('/signup', loginValid, createUser);
+app.post('/signin', addUserValid, login);
+app.post('/signup', addUserValid, createUser);
 
 // остальные роуты защищаем миддлварой auth
 app.use(auth);
