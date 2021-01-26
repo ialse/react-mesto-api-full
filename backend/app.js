@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
@@ -10,11 +11,12 @@ const createUser = require('./controllers/users/adduser');
 const auth = require('./middlewares/auth');
 const finalErr = require('./errors/final-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { loginValid } = require('./helpers/validation');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DB_CONN } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(DB_CONN, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -39,28 +41,14 @@ const corsOptions = {
 };
 
 app.use('*', cors(corsOptions));
-
-// Включаю бодипарсер
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // Включаю бодипарсер
 
 // Включаю раздачу статичных файлов
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(requestLogger); // лог запросов
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
-  }),
-}), login);
-
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
-  }),
-}), createUser);
+app.post('/signin', loginValid, login);
+app.post('/signup', loginValid, createUser);
 
 // остальные роуты защищаем миддлварой auth
 app.use(auth);

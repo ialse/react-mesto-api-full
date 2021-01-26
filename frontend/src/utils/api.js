@@ -104,8 +104,7 @@ class Api {
 }
 
 export const api = new Api({
-    //baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-16',
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://api.ialse-mesto.students.nomoredomains.rocks',
     headers: {
         'Content-Type': 'application/json',
     },
