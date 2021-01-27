@@ -192,8 +192,7 @@ function App() {
           handleLogin(email);
           history.push('/');
         }
-      })
-      .catch(err => console.log(err));
+      });
   }
 
   // Обработчики открытия попапов

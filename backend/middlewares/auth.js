@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { NODE_ENV, JWT_SECRET } = process.env;
 const ForbiddenError = require('../errors/forbidden-err');
 
 // при каждом заходе пользователя проверяем его куку, корректный ли там jwt
@@ -13,7 +14,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'iuerteter87534hjkerbf3k4br43j5');
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev');
   } catch (err) {
     throw new ForbiddenError('Необходима авторизация');
   }
