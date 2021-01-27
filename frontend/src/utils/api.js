@@ -104,7 +104,7 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: 'http://api.ialse-mesto.students.nomoredomains.rocks',
+    baseUrl: 'https://api.ialse-mesto.students.nomoredomains.rocks',
     headers: {
         'Content-Type': 'application/json',
     },

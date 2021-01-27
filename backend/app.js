@@ -12,6 +12,7 @@ const auth = require('./middlewares/auth');
 const finalErr = require('./errors/final-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { addUserValid } = require('./helpers/validation');
+const { corsOptions } = require('./helpers/corsOptions');
 
 const { PORT = 3000, DB_CONN } = process.env;
 const app = express();
@@ -22,34 +23,18 @@ mongoose.connect(DB_CONN, {
   useFindAndModify: false,
 });
 
-const corsOptions = {
-  origin: [
-    'http://ialse-mesto.students.nomoredomains.rocks',
-    'http://www.ialse-mesto.students.nomoredomains.rocks',
-    'http://api.ialse-mesto.students.nomoredomains.rocks',
-    'http://www.api.ialse-mesto.students.nomoredomains.rocks',
-    'http://localhost:3001',
-    'http://localhost:3000',
-    'http://127.0.0.1:3001',
-    'http://127.0.0.1:3000',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: [
-    'Content-Type',
-    'origin',
-    'x-access-token',
-  ],
-  credentials: true,
-};
-
 app.use('*', cors(corsOptions));
 app.use(bodyParser.json()); // Включаю бодипарсер
 
 // Включаю раздачу статичных файлов
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(requestLogger); // лог запросов
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', addUserValid, login);
 app.post('/signup', addUserValid, createUser);
