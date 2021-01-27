@@ -16,7 +16,9 @@ const addLike = require('../controllers/cards/addlike');
 const delLike = require('../controllers/cards/dellike');
 
 const notFound = require('../controllers/notfound');
-const { updUserValid, addUserValid, updAvatarValid, addCardValid } = require('../helpers/validation');
+const {
+  updUserValid, addUserValid, updAvatarValid, addCardValid,
+} = require('../helpers/validation');
 
 // Устанавливаю обработчики роутеров
 // Для пользователя

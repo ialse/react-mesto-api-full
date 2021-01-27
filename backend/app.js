@@ -2,7 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-const { celebrate, Joi, errors } = require('celebrate');
+const { errors } = require('celebrate');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const router = require('./routes/routes');
@@ -49,5 +49,6 @@ app.use(errors()); // Обработчик ошибок celebrate
 app.use(finalErr);
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Сервер работает. Порт: ${PORT}`);
 });

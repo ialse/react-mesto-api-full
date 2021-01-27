@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 const ForbiddenError = require('../errors/forbidden-err');
 
@@ -23,4 +24,3 @@ module.exports = (req, res, next) => {
 
   next();
 };
-

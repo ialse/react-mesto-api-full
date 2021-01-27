@@ -27,4 +27,6 @@ const addCardValid = celebrate({
   }),
 });
 
-module.exports = { addUserValid, updUserValid, updAvatarValid, addCardValid };
+module.exports = {
+  addUserValid, updUserValid, updAvatarValid, addCardValid,
+};
