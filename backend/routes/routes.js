@@ -17,14 +17,14 @@ const delLike = require('../controllers/cards/dellike');
 
 const notFound = require('../controllers/notfound');
 const {
-  updUserValid, addUserValid, updAvatarValid, addCardValid,
+  updUserValid, addUserValid, updAvatarValid, addCardValid, cardIdValid, userIdValid,
 } = require('../helpers/validation');
 
 // Устанавливаю обработчики роутеров
 // Для пользователя
 router.get('/users', getUsers);
 router.get('/users/me', getCurUser);
-router.get('/users/:userId', getUser);
+router.get('/users/:userId', userIdValid, getUser);
 router.get('/logout', logout);
 router.post('/users', addUserValid, addUser);
 router.patch('/users/me', updUserValid, updUser);
@@ -33,9 +33,9 @@ router.patch('/users/me/avatar', updAvatarValid, updAvatar);
 // Для карточек
 router.get('/cards', getCards);
 router.post('/cards', addCardValid, addCard);
-router.delete('/cards/:cardId', delCard);
-router.put('/cards/:cardId/likes', addLike);
-router.delete('/cards/:cardId/likes', delLike);
+router.delete('/cards/:cardId', cardIdValid, delCard);
+router.put('/cards/:cardId/likes', cardIdValid, addLike);
+router.delete('/cards/:cardId/likes', cardIdValid, delLike);
 
 router.all('*', notFound);
 

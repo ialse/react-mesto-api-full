@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const { errors } = require('celebrate');
@@ -25,10 +24,7 @@ mongoose.connect(DB_CONN, {
 
 app.use('*', cors(corsOptions));
 app.use(bodyParser.json()); // Включаю бодипарсер
-
-// Включаю раздачу статичных файлов
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(requestLogger); // лог запросов
+app.use(requestLogger); // Лог запросов
 
 app.get('/crash-test', () => {
   setTimeout(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcryptjs');
 const User = require('../../models/user'); // импортирую модель пользователя
 const RegistrationError = require('../../errors/registration-err');
@@ -18,7 +19,12 @@ function addUser(req, res, next) {
       email,
       password: hash,
     }))
-    .then((user) => res.status(200).send(user))
+    .then((user) => {
+      // eslint-disable-next-line prefer-object-spread
+      const objUser = Object.assign({}, user._doc);
+      delete objUser.password;
+      return res.status(200).send(objUser);
+    })
     .catch(next);
 }
 

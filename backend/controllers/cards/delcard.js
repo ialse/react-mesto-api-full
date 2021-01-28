@@ -19,6 +19,7 @@ function delCard(req, res, next) {
       if (card) {
         return res.status(200).send({ message: `Удалена карточка: ${card.name}, ${card.link}` });
       }
+      throw new NotFoundError('Карточка не найдена в базе');
     })
     .catch(next);
 }

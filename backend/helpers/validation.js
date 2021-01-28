@@ -4,6 +4,9 @@ const addUserValid = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
+    name: Joi.string().min(2).max(30),
+    about: Joi.string().min(2).max(30),
+    avatar: Joi.string(),
   }),
 });
 
@@ -27,6 +30,23 @@ const addCardValid = celebrate({
   }),
 });
 
+const cardIdValid = celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().length(24).required().hex(),
+  }),
+});
+
+const userIdValid = celebrate({
+  params: Joi.object().keys({
+    userId: Joi.string().length(24).required().hex(),
+  }),
+});
+
 module.exports = {
-  addUserValid, updUserValid, updAvatarValid, addCardValid,
+  addUserValid,
+  updUserValid,
+  updAvatarValid,
+  addCardValid,
+  cardIdValid,
+  userIdValid,
 };
