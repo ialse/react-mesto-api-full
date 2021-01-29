@@ -10,7 +10,6 @@ function updAvatar(req, res, next) {
     {
       new: true, // обработчик then получит на вход обновлённую запись
       runValidators: true, // данные будут валидированы перед изменением
-      upsert: true, // если пользователь не найден, он будет создан
     },
   )
     .then((user) => res.status(200).send(user))

@@ -11,7 +11,7 @@ const auth = require('./middlewares/auth');
 const finalErr = require('./errors/final-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { addUserValid } = require('./helpers/validation');
-const { corsOptions } = require('./helpers/corsOptions');
+const { corsOptions } = require('./helpers/cors-options');
 
 const { PORT = 3000, DB_CONN } = process.env;
 const app = express();
