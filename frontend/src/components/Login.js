@@ -18,8 +18,6 @@ const Login = memo(({ authLogin }) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('handleSubmit');
-        console.log(email, password);
 
         if (!email || !password) {
             return;

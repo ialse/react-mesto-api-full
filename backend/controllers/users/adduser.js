@@ -5,7 +5,9 @@ const RegistrationError = require('../../errors/registration-err');
 
 // Добавляю пользователя в базу
 function addUser(req, res, next) {
-  const { email, name, about, avatar } = req.body;
+  const {
+    email, name, about, avatar,
+  } = req.body;
 
   // Проверяем, есть ли пользователь с такой почтой в базе
   User.findOne({ email })
