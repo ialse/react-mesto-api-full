@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.ialse-mesto.students.nomoredomains.rocks';
+export const BASE_URL = 'https://api.mesto-ialse.students.nomoredomains.rocks';
 
 export const register = (email, password) => {
     return fetch(`${BASE_URL}/signup`, {

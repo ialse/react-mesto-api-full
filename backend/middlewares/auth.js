@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
   } catch (err) {
     throw new ForbiddenError('Необходима авторизация');
   }
-
+  console.log(payload);
   req.user = payload;
 
   next();
