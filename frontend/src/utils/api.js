@@ -3,7 +3,7 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
     this._credentials = credentials;
-    this._errorServer = document.querySelector(".error-server");
+    this._errorServer = document.querySelector('.error-server');
   }
 
   // Получение ответа от сервера, иначе ошибка
@@ -29,7 +29,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
       credentials: this._credentials,
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({
         name: name,
         link: link,
@@ -44,13 +44,13 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${card._id}`, {
       headers: this._headers,
       credentials: this._credentials,
-      method: "DELETE",
+      method: 'DELETE',
     });
   }
 
   // Обновление лайка
   changeLikeCardStatus(card, isLiked) {
-    const action = isLiked ? "DELETE" : "PUT";
+    const action = isLiked ? 'DELETE' : 'PUT';
 
     return fetch(`${this._baseUrl}/cards/${card._id}/likes`, {
       headers: this._headers,
@@ -66,7 +66,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,
       credentials: this._credentials,
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify({
         avatar: link,
       }),
@@ -90,7 +90,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
       credentials: this._credentials,
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify({
         name: name,
         about: about,
@@ -102,10 +102,10 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://api.mesto-ialse.students.nomoredomains.rocks",
-  //baseUrl: "http://localhost:3000",
+  baseUrl: 'https://api.mesto-ialse.students.nomoredomains.rocks',
+  //baseUrl: 'http://localhost:3000',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
-  credentials: "include",
+  credentials: 'include',
 });
