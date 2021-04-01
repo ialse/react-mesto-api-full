@@ -3,9 +3,10 @@
 @import url("./__btn/form__btn.css");
 @import url("./__text/form__text.css");
 @import url("./__link/form__link.css");
+@import url("./__error/form__error.css");
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 60px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 0;
 }

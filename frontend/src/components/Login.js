@@ -1,45 +1,25 @@
-import React, { useState, memo } from 'react';
-import FormSign from './FormSign';
+import React, { memo } from "react";
+import FormSign from "./FormSign";
 
 const Login = memo(({ authLogin }) => {
+  function handleSubmit(e, { email, password }) {
+    e.preventDefault();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    // Обработчик ввода данных в поля
-    function handleChange(e) {
-        const { name, value } = e.target;
-
-        //обновляем значение поля после каждого ввода символа
-        name === "email" ?
-            setEmail(value) :
-            setPassword(value);
+    if (!email || !password) {
+      return;
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    authLogin(email, password);
+  }
 
-        if (!email || !password) {
-            return;
-        }
-
-        authLogin(email, password)
-            .then(() => {
-                setEmail('');
-                setPassword('');
-            })
-            .catch(err => console.log(err));
-    }
-
-    return (
-        <FormSign
-            name="sign-in"
-            title="Вход"
-            btnName="Войти"
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-        />
-    );
+  return (
+    <FormSign
+      name="sign-in"
+      title="Вход"
+      btnName="Войти"
+      onSubmit={handleSubmit}
+    />
+  );
 });
 
 export default Login;

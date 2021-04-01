@@ -1,0 +1,8 @@
+.form__error {
+  display: block;
+  width: 358px;
+  min-height: 36px;
+  color: #a52a2a;
+  font-size: 11px;
+  line-height: 1.21;
+}

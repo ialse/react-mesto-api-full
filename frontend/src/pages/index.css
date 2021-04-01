@@ -40,3 +40,4 @@
 @import url("../blocks/error-server/_active/error-server.css");
 @import url("../blocks/popup/__btn-submit/_sign/popup__btn-submit_sign.css");
 @import url("../blocks/popup/__form/_sign/popup__form_sign.css");
+@import url("../blocks/form/__btn/_disabled/form__btn_disabled.css");
