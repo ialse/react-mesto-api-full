@@ -316,9 +316,7 @@ function App() {
         history.push("/");
       })
       .catch((err) => {
-        if (checkNetwork(err)) {
-          onInfoTooltip(err.message, "error");
-        }
+        console.log(err.message);
       });
   }
 
